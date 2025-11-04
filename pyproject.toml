@@ -2,7 +2,7 @@
 name = "datadrop-cli-extralsc"
 version = "0.1.0"
 description = "CLI tool for uploading and sharing files via datadrop.sh - like a pastebin for files"
-authors = [{ name = "Christopher Salame", email = "chris@ceeglo.se" }]
+authors = [{ name = "Christopher S", email = "chris@ceeglo.se" }]
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.8"
