@@ -12,7 +12,7 @@ class DatadropAPIError(Exception):
 class DatadropClient:
     """Client for interacting with datadrop.sh API"""
 
-    def __init__(self, base_url: str = "http://datadrop.sh"):
+    def __init__(self, base_url: str = "https://datadrop.sh"):
         self.base_url = base_url.rstrip("/")
         self.api_url = self.base_url
 
