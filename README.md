@@ -249,7 +249,7 @@ Albums send data as multipart/form-data:
 
 ## Requirements
 
-- Python >= 3.12
+- Python >= 3.8
 - click >= 8.1.7
 - requests >= 2.31.0
 
