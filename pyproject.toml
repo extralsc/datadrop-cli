@@ -1,5 +1,5 @@
 [project]
-name = "datadrop-cli-extralsc"
+name = "datadrop_cli_extralsc"
 version = "0.1.0"
 description = "CLI tool for uploading and sharing files via datadrop.sh - like a pastebin for files"
 authors = [{ name = "Christopher S", email = "chris@ceeglo.se" }]
