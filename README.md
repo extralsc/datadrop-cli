@@ -16,6 +16,7 @@ datadrop -a photo1.jpg photo2.jpg
 ```
 
 **Why pipx?**
+
 - ✅ `datadrop` command available globally in any directory
 - ✅ No need to activate virtual environments
 - ✅ Works in `.bashrc`, `.zshrc`, scripts, anywhere
@@ -23,6 +24,7 @@ datadrop -a photo1.jpg photo2.jpg
 - ✅ Easy to manage: `pipx uninstall datadrop-cli`
 
 **Don't have pipx?** Install it first:
+
 ```bash
 # Debian/Ubuntu
 sudo apt install pipx
@@ -208,6 +210,7 @@ datadrop --help                   # Show help
 Albums let you share multiple files together in one shareable link with a file explorer UI.
 
 **What you get:**
+
 - 📁 File tree explorer in left sidebar
 - 👁️ Text file preview (auto-loads and displays)
 - ⬇️ Binary file download buttons
@@ -215,6 +218,7 @@ Albums let you share multiple files together in one shareable link with a file e
 - 🌙 Dark mode support
 
 **Usage:**
+
 ```bash
 # Upload multiple images as an album
 datadrop -a photo1.jpg photo2.jpg photo3.jpg
@@ -233,16 +237,19 @@ datadrop -a file.txt "README content" src/ "Notes about src"
 ```
 
 **Album vs Regular Multiple Upload:**
+
 - **Album** (`-a`): All items in ONE link with file explorer UI
 - **Regular**: Each item gets its OWN separate link
 
 **Requirements:**
+
 - Minimum 2 items required for albums
 - Supports files, folders (auto-zipped), AND text content
 - 10MB total size limit
 
 **Backend Integration:**
 Albums send data as multipart/form-data:
+
 - Files: `files[]=@filename.ext`
 - Text: `content[]="text"` with `names[]="name"`
 - Mixed: Both files and content in same request
@@ -269,8 +276,10 @@ python -m datadrop --help
 ## API
 
 Datadrop CLI uses the datadrop.sh API:
-- Endpoint: `POST https://datadrop.sh/api/pastes`
+
+- Endpoint: `POST https://datadrop.sh`
 - No authentication required
+- Data valid for 24h before deleted
 
 ## Development
 
