@@ -2,9 +2,9 @@
 name = "datadrop-cli"
 version = "0.1.0"
 description = "CLI tool for uploading and sharing files via datadrop.sh - like a pastebin for files"
-authors = [{ name = "Andreas Bergman", email = "andreas@arjancodes.com" }]
+authors = [{ name = "Christopher Salame", email = "chris@ceeglo.se" }]
 readme = "README.md"
-license = { text = "MIT" }
+license = { file = "LICENSE" }
 requires-python = ">=3.12"
 keywords = ["cli", "file-sharing", "pastebin", "upload", "datadrop"]
 classifiers = [
@@ -33,7 +33,7 @@ Issues = "https://github.com/extralsc/datadrop-cli/issues"
 datadrop = "datadrop:cli"
 
 [tool.hatch.build.targets.wheel]
-packages = ["datadrop"]
+packages = ["src/datadrop"]
 
 [build-system]
 requires = ["hatchling"]

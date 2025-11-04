@@ -272,11 +272,42 @@ Datadrop CLI uses the datadrop.sh API:
 - Endpoint: `POST https://datadrop.sh/api/pastes`
 - No authentication required
 
+## Development
+
+### Building the Package
+
+```bash
+# Install build tools
+pip install build
+
+# Build the package
+python -m build
+```
+
+### Publishing to PyPI
+
+```bash
+# Install twine
+pip install twine
+
+# Upload to PyPI (requires PyPI account and API token)
+twine upload dist/*
+```
+
+### Running Tests
+
+```bash
+# Install in development mode
+pip install -e .
+
+# Run tests (when added)
+pytest
+```
+
 ## License
 
-MIT
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-# datadrop-cli
