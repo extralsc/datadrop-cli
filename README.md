@@ -8,7 +8,7 @@ A simple command-line tool to upload and share files via [datadrop.sh](https://d
 
 ```bash
 # Install with pipx
-pipx install datadrop-cli
+pipx install datadrop-cli-extralsc
 
 # Now use anywhere, anytime - no environment activation needed!
 datadrop file.txt
@@ -41,7 +41,7 @@ pipx ensurepath
 
 ```bash
 # Install to ~/.local/bin (globally available)
-pip install --user datadrop-cli
+pip install --user datadrop-cli-extralsc
 
 # Command is now available globally
 datadrop file.txt
