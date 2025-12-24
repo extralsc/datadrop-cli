@@ -1,6 +1,6 @@
 [project]
 name = "datadrop_cli_extralsc"
-version = "0.1.1"
+version = "0.1.4"
 description = "CLI tool for uploading and sharing files via datadrop.sh - like a pastebin for files"
 authors = [{ name = "Christopher S", email = "chris@ceeglo.se" }]
 readme = "README.md"
@@ -26,6 +26,7 @@ classifiers = [
 dependencies = [
     "click>=8.1.7",
     "requests>=2.31.0",
+    "segno>=1.6.0",
 ]
 
 [project.urls]

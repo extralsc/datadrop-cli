@@ -4,6 +4,7 @@ import sys
 import tempfile
 import zipfile
 import click
+import segno
 from .api_client import DatadropClient, DatadropAPIError
 
 
@@ -11,8 +12,9 @@ from .api_client import DatadropClient, DatadropAPIError
 @click.argument("inputs", nargs=-1, required=False)
 @click.option("--name", "-n", help="Custom name for the uploaded file (only works with single file)")
 @click.option("--album", "-a", is_flag=True, help="Upload multiple files as an album")
+@click.option("--qr/--no-qr", "-q", default=True, help="Display a QR code for the share URL (default: on)")
 @click.version_option(version="0.1.0")
-def cli(inputs: tuple, name: str, album: bool):
+def cli(inputs: tuple, name: str, album: bool, qr: bool):
     """
     Datadrop CLI - Upload and share files via datadrop.sh
 
@@ -20,7 +22,8 @@ def cli(inputs: tuple, name: str, album: bool):
     similar to a pastebin for files.
 
     Examples:
-        datadrop file.txt              # Upload a file
+        datadrop file.txt              # Upload a file (shows QR code)
+        datadrop file.txt --no-qr      # Upload without QR code
         datadrop file1.txt file2.txt   # Upload multiple files
         datadrop -a file1.txt file2.txt file3.txt  # Upload as album
         datadrop --album *.jpg         # Upload all images as album
@@ -50,7 +53,7 @@ def cli(inputs: tuple, name: str, album: bool):
                 result = client.upload_text(text, filename)
 
                 click.echo(click.style("Paste created successfully!", fg="green", bold=True))
-                _display_result(result)
+                _display_result(result, show_qr=qr)
             else:
                 # No input provided
                 click.echo(click.style("Error: No input provided", fg="red"))
@@ -108,7 +111,7 @@ def cli(inputs: tuple, name: str, album: bool):
             try:
                 result = client.upload_album(album_items)
                 click.echo(click.style(f"\n📦 Album created successfully with {result.get('file_count', len(album_items))} items!", fg="green", bold=True))
-                _display_result(result)
+                _display_result(result, show_qr=qr)
             finally:
                 # Clean up temp zip files
                 for zip_path in temp_zips:
@@ -160,7 +163,7 @@ def cli(inputs: tuple, name: str, album: bool):
                 sys.exit(1)
             else:
                 click.echo(click.style("Upload successful!", fg="green", bold=True))
-                _display_result(results[0])
+                _display_result(results[0], show_qr=qr)
         else:
             # Multiple uploads - show summary
             success_count = sum(1 for r in results if 'error' not in r)
@@ -220,10 +223,15 @@ def _zip_folder(folder_path: Path, custom_name: str = None) -> Path:
     return zip_path
 
 
-def _display_result(result: dict):
+def _display_result(result: dict, show_qr: bool = False):
     """Helper function to display upload result"""
     if 'url' in result:
         click.echo(f"\nShare URL: {click.style(result['url'], fg='cyan', bold=True)}")
+
+        if show_qr:
+            qr = segno.make(result['url'])
+            click.echo("")
+            qr.terminal(compact=True)
 
     if 'id' in result:
         click.echo(f"Paste ID: {result['id']}")

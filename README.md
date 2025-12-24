@@ -68,6 +68,26 @@ pip install -e .
 pipx install -e .
 ```
 
+## Updating
+
+### pipx (Recommended)
+
+```bash
+pipx upgrade datadrop-cli-extralsc
+```
+
+### pip
+
+```bash
+pip install --upgrade datadrop-cli-extralsc
+```
+
+### pip with --user
+
+```bash
+pip install --user --upgrade datadrop-cli-extralsc
+```
+
 ## Usage
 
 The CLI is super simple - just pass what you want to share:
@@ -176,6 +196,7 @@ xclip -o | datadrop
 
 ## Features
 
+- **QR code display**: Automatically shows a scannable QR code after upload (disable with `--no-qr`)
 - **Album uploads**: Upload multiple files as an album with file explorer UI (`-a` or `--album`)
 - **Multiple uploads**: Upload multiple files and folders in one command
 - **Smart detection**: Automatically detects files, folders, or text
@@ -191,6 +212,7 @@ xclip -o | datadrop
 datadrop <input> [input2...]      # Upload file(s)/folder(s) or create paste
 datadrop -a <file1> <file2> ...   # Upload multiple files as an album
 datadrop --album <files...>       # Upload multiple files as an album (long form)
+datadrop --no-qr <input>          # Upload without showing QR code
 datadrop --name "name"            # Upload with custom name (single file only)
 datadrop --version                # Show version
 datadrop --help                   # Show help
@@ -259,6 +281,7 @@ Albums send data as multipart/form-data:
 - Python >= 3.8
 - click >= 8.1.7
 - requests >= 2.31.0
+- segno >= 1.6.0 (for QR code generation)
 
 ## Development
 
